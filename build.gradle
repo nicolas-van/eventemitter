@@ -10,7 +10,7 @@ apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
 
 group = 'eventemitter'
-version = '0.0.1'
+version = '0.0.2'
 
 repositories {
     jcenter()
@@ -49,6 +49,7 @@ bintray {
     user = 'nicolas-van'
     key = System.getenv("BINTRAY_API_KEY")
     publications = ['MyPublication']
+    publish = true
     
     pkg {
         repo = 'maven'
