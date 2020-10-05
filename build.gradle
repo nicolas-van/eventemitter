@@ -2,8 +2,7 @@
 plugins {
     id "com.diffplug.gradle.spotless" version "3.26.1"
     id "io.freefair.lombok" version "5.1.0"
-    id "com.jfrog.bintray" version "1.7"
-    id "maven-publish"
+    id "com.jfrog.bintray" version "1.8.5"
 }
 
 apply plugin: 'java'
@@ -36,18 +35,6 @@ test {
 }
 
 publishing {
-    /*
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/nicolas-van/eventemitter")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-    }
-    */
     publications {
         MyPublication(MavenPublication) {
             from(components.java)
@@ -65,7 +52,7 @@ bintray {
     
     pkg {
         repo = 'maven'
-        name = 'eventemitter'
+        name = rootProject.name
         licenses = ['MIT']
         vcsUrl = 'https://github.com/nicolas-van/eventemitter'
         pkg {
