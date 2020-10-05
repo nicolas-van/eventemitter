@@ -53,6 +53,28 @@ artifacts {
     archives javadocJar
 }
 
+def pomConfig = {
+    licenses {
+        // the license
+        license {
+            name "MIT"
+            url "https://opensource.org/licenses/MIT"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "nicolas-van"
+            name "Nicolas Vanhoren"
+        }
+    }
+    
+    scm {
+        // the vcs url
+       url "https://github.com/nicolas-van/eventemitter"
+    }
+}
+
 publishing {
     publications {
         MyPublication(MavenPublication) {
@@ -88,7 +110,9 @@ bintray {
         // the repo name in bintray
         repo = 'maven'
         name = rootProject.name
+        // the license again
         licenses = ['MIT']
+        // the vcs url again
         vcsUrl = 'https://github.com/nicolas-van/eventemitter'
         pkg {
             version {
