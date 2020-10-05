@@ -10,7 +10,7 @@ apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
 
 group = 'eventemitter'
-version = '0.0.3'
+version = '0.0.4'
 
 repositories {
     jcenter()
@@ -61,6 +61,12 @@ publishing {
             groupId rootProject.group
             artifactId rootProject.name
             version rootProject.version
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'A simple library implementing an event emitter in Java.')
+                root.appendNode('url', 'https://github.com/nicolas-van/eventemitter#readme')
+                root.children().last() + pomConfig
+            }
         }
     }
 }
