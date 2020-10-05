@@ -10,7 +10,7 @@ apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
 
 group = 'eventemitter'
-version = '0.0.0'
+version = '0.0.1'
 
 repositories {
     jcenter()
@@ -42,6 +42,14 @@ publishing {
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+        maven {
+            name = "Bintray"
+            url = uri("https://dl.bintray.com/nicolas-van/nicolas-van.github.io")
+            credentials {
+                username = 'nicolas-van'
+                password = System.getenv("BINTRAY_API_KEY")
             }
         }
     }
