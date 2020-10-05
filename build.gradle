@@ -10,9 +10,9 @@ apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
 
 // group is necessary
-group = 'eventemitter'
+group = 'io.github.nicolas-van'
 // the current version
-version = '0.0.4'
+version = '0.0.5'
 
 repositories {
     jcenter()
