@@ -9,7 +9,9 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
 
+// group is necessary
 group = 'eventemitter'
+// the current version
 version = '0.0.4'
 
 repositories {
@@ -63,7 +65,10 @@ publishing {
             version rootProject.version
             pom.withXml {
                 def root = asNode()
+                // the description of the project
                 root.appendNode('description', 'A simple library implementing an event emitter in Java.')
+                root.appendNode('name', rootProject.name)
+                // the name of the project
                 root.appendNode('url', 'https://github.com/nicolas-van/eventemitter#readme')
                 root.children().last() + pomConfig
             }
@@ -72,12 +77,15 @@ publishing {
 }
 
 bintray {
+    // the user name in bintray
     user = 'nicolas-van'
+    // the bintray api key
     key = System.getenv("BINTRAY_API_KEY")
     publications = ['MyPublication']
     publish = true
     
     pkg {
+        // the repo name in bintray
         repo = 'maven'
         name = rootProject.name
         licenses = ['MIT']
