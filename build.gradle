@@ -51,9 +51,9 @@ publishing {
     publications {
         MyPublication(MavenPublication) {
             from(components.java)
-            groupId group
-            artifactId name
-            version version
+            groupId rootProject.group
+            artifactId rootProject.name
+            version rootProject.version
         }
     }
 }
@@ -70,7 +70,7 @@ bintray {
         vcsUrl = 'https://github.com/nicolas-van/eventemitter'
         pkg {
             version {
-                name = version
+                name = rootProject.version
             }
         }
     }
