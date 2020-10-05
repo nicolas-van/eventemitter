@@ -2,6 +2,7 @@
 plugins {
     id "com.diffplug.gradle.spotless" version "3.26.1"
     id "io.freefair.lombok" version "5.1.0"
+    id "com.jfrog.bintray" version "1.7"
     id "maven-publish"
 }
 
@@ -35,6 +36,7 @@ test {
 }
 
 publishing {
+    /*
     repositories {
         maven {
             name = "GitHubPackages"
@@ -44,18 +46,32 @@ publishing {
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
-        maven {
-            name = "Bintray"
-            url = uri("https://dl.bintray.com/nicolas-van/nicolas-van.github.io")
-            credentials {
-                username = 'nicolas-van'
-                password = System.getenv("BINTRAY_API_KEY")
-            }
+    }
+    */
+    publications {
+        MyPublication(MavenPublication) {
+            from(components.java)
+            groupId group
+            artifactId name
+            version version
         }
     }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
+}
+
+bintray {
+    user = 'nicolas-van'
+    key = System.getenv("BINTRAY_API_KEY")
+    publications = ['MyPublication']
+    
+    pkg {
+        repo = 'maven'
+        name = 'eventemitter'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/nicolas-van/eventemitter'
+        pkg {
+            version {
+                name = version
+            }
         }
     }
 }
