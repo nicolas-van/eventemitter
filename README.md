@@ -19,7 +19,7 @@ import lombok.NonNull;
 public class ExampleClass {
     
     @Getter
-    private EventEmitter<String> statusChanged = new EventEmitter<>();
+    private final EventEmitter<String> statusChanged = new EventEmitter<>();
     
     @Getter
     @NonNull
