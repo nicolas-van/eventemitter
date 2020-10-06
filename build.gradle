@@ -12,7 +12,7 @@ apply plugin: 'maven-publish'
 // group is necessary
 group = 'io.github.nicolas-van'
 // the current version
-version = '0.0.5'
+version = '0.0.6'
 
 repositories {
     jcenter()
