@@ -80,3 +80,47 @@ dependencies {
   </dependency>
 </dependencies>
 ```
+
+## Usage
+
+```java
+// ExampleClass.java
+package example;
+
+import eventemitter.EventEmitter;
+import lombok.Getter;
+import lombok.NonNull;
+
+public class ExampleClass {
+    
+    @Getter
+    private EventEmitter<String> statusChanged = new EventEmitter<>();
+    
+    @Getter
+    @NonNull
+    private String status = "";
+    
+    public void setStatus(String stat) {
+        if (!this.status.equals(stat)) {
+            this.status = stat;
+            this.statusChanged.trigger(stat);
+        }
+    }
+}
+```
+
+```java
+package example;
+
+public class ExampleConsumer {
+    public static void main(String[] args) {
+        ExampleClass e = new ExampleClass();
+        
+        e.getStatusChanged().addConsumer((s) -> {
+            System.out.println("New status is " + s);
+        });
+        
+        e.setStatus("waiting");
+    }
+}
+```
