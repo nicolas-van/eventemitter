@@ -26,10 +26,8 @@ public class ExampleClass {
     private String status = "";
     
     public void setStatus(String stat) {
-        if (!this.status.equals(stat)) {
-            this.status = stat;
-            this.statusChanged.trigger(stat);
-        }
+        this.status = stat;
+        this.statusChanged.trigger(stat);
     }
 }
 ```
