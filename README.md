@@ -9,7 +9,7 @@ A simple library implementing an event emitter in Java.
 
 ### Gradle
 
-```
+```groovy
 repositories {
     jcenter()
 }
@@ -21,7 +21,7 @@ dependencies {
 
 ### Maven
 
-```
+```xml
 <profiles>
   <profile>
     <repositories>
