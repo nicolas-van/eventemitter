@@ -1,6 +1,6 @@
 
 # eventemitter
 
-A simple library implementing an event emitter in Java. TEst
+A simple library implementing an event emitter in Java.
 
 [See the javadoc here](./javadoc)
