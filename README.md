@@ -5,6 +5,53 @@ A simple library implementing an event emitter in Java.
 
 [Link to the javadoc.](https://nicolas-van.github.io/eventemitter/javadoc)
 
+
+## Usage
+
+```java
+// ExampleClass.java
+package example;
+
+import eventemitter.EventEmitter;
+import lombok.Getter;
+import lombok.NonNull;
+
+public class ExampleClass {
+    
+    @Getter
+    private EventEmitter<String> statusChanged = new EventEmitter<>();
+    
+    @Getter
+    @NonNull
+    private String status = "";
+    
+    public void setStatus(String stat) {
+        if (!this.status.equals(stat)) {
+            this.status = stat;
+            this.statusChanged.trigger(stat);
+        }
+    }
+}
+```
+
+```java
+// ExampleConsumer.java
+package example;
+
+public class ExampleConsumer {
+    public static void main(String[] args) {
+        ExampleClass e = new ExampleClass();
+        
+        e.getStatusChanged().addConsumer((s) -> {
+            System.out.println("New status is " + s);
+        });
+        
+        e.setStatus("waiting");
+    }
+}
+```
+
+
 ## Installation
 
 ### Gradle
@@ -79,51 +126,6 @@ dependencies {
     <type>pom</type>
   </dependency>
 </dependencies>
-```
-
-## Usage
-
-```java
-// ExampleClass.java
-package example;
-
-import eventemitter.EventEmitter;
-import lombok.Getter;
-import lombok.NonNull;
-
-public class ExampleClass {
-    
-    @Getter
-    private EventEmitter<String> statusChanged = new EventEmitter<>();
-    
-    @Getter
-    @NonNull
-    private String status = "";
-    
-    public void setStatus(String stat) {
-        if (!this.status.equals(stat)) {
-            this.status = stat;
-            this.statusChanged.trigger(stat);
-        }
-    }
-}
-```
-
-```java
-// ExampleConsumer.java
-package example;
-
-public class ExampleConsumer {
-    public static void main(String[] args) {
-        ExampleClass e = new ExampleClass();
-        
-        e.getStatusChanged().addConsumer((s) -> {
-            System.out.println("New status is " + s);
-        });
-        
-        e.setStatus("waiting");
-    }
-}
 ```
 
 ## License
