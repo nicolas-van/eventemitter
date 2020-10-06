@@ -110,6 +110,7 @@ public class ExampleClass {
 ```
 
 ```java
+// ExampleConsumer.java
 package example;
 
 public class ExampleConsumer {
