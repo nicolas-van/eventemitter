@@ -57,7 +57,7 @@ public class ExampleConsumer {
 
 ```groovy
 repositories {
-    jcenter()
+  jcenter()
 }
 
 dependencies {
