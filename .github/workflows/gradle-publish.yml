@@ -29,3 +29,8 @@ jobs:
         MVN_PGP_PRIVATE_KEY_PASSWORD: ${{ secrets.MVN_PGP_PRIVATE_KEY_PASSWORD }}
         SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+    - name: Release to central
+      run: gradle closeAndReleaseRepository
+      env:
+        SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}

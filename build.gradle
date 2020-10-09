@@ -2,6 +2,7 @@
 plugins {
     id "com.diffplug.gradle.spotless" version "3.26.1"
     id "io.freefair.lombok" version "5.1.0"
+    id 'io.codearte.nexus-staging' version '0.22.0'
 }
 
 apply plugin: 'java'
@@ -16,7 +17,7 @@ repositories {
 // group is necessary
 group = 'io.github.nicolas-van'
 // the current version
-version = '0.0.9'
+version = '0.0.10'
 
 java {
     withJavadocJar()
@@ -88,3 +89,8 @@ signing {
     sign publishing.publications.MyPublication
 }
 
+nexusStaging {
+    username System.getenv("SONATYPE_USERNAME")
+    password System.getenv("SONATYPE_PASSWORD")
+    stagingProfileId = rootProject.group
+}
