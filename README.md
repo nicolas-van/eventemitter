@@ -3,6 +3,24 @@
 
 A simple library implementing an event emitter in Java.
 
+## Installation
+
+### Gradle
+
+```groovy
+implementation 'io.github.nicolas-van:eventemitter:0.0.9'
+```
+
+### Maven
+
+```xml
+<dependency>
+<groupId>io.github.nicolas-van</groupId>
+<artifactId>eventemitter</artifactId>
+<version>0.0.6</version>
+<type>pom</type>
+</dependency>
+```
 
 ## Usage
 
@@ -50,82 +68,6 @@ public class ExampleConsumer {
 ## Javadoc
 
 [Link to the javadoc.](https://nicolas-van.github.io/eventemitter/javadoc)
-
-## Installation
-
-### Gradle
-
-```groovy
-repositories {
-  jcenter()
-}
-
-dependencies {
-  implementation 'io.github.nicolas-van:eventemitter:0.0.6'
-}
-```
-
-### Maven
-
-```xml
-<profiles>
-  <profile>
-    <repositories>
-      <repository>
-        <snapshots>
-          <enabled>
-            false
-          </enabled>
-        </snapshots>
-        <id>
-          bintray-nicolas-van-maven
-        </id>
-        <name>
-          bintray
-        </name>
-        <url>
-          https://dl.bintray.com/nicolas-van/maven
-        </url>
-      </repository>
-    </repositories>
-    <pluginRepositories>
-      <pluginRepository>
-        <snapshots>
-          <enabled>
-            false
-          </enabled>
-        </snapshots>
-        <id>
-          bintray-nicolas-van-maven
-        </id>
-        <name>
-          bintray-plugins
-        </name>
-        <url>
-          https://dl.bintray.com/nicolas-van/maven
-        </url>
-      </pluginRepository>
-    </pluginRepositories>
-    <id>
-      bintray
-    </id>
-  </profile>
-</profiles>
-<activeProfiles>
-  <activeProfile>
-    bintray
-  </activeProfile>
-</activeProfiles>
-
-<dependencies>
-  <dependency>
-    <groupId>io.github.nicolas-van</groupId>
-    <artifactId>eventemitter</artifactId>
-    <version>0.0.6</version>
-    <type>pom</type>
-  </dependency>
-</dependencies>
-```
 
 ## License
 
