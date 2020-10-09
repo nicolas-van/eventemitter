@@ -14,8 +14,11 @@ repositories {
     mavenCentral()
 }
 
+// remember project name is indicated in settings.gradle
+
 // group is necessary
 group = 'io.github.nicolas-van'
+
 // the current version
 version = '0.0.11'
 
@@ -53,6 +56,7 @@ publishing {
 
             pom {
                 name = rootProject.name
+                // some info about the project
                 description = 'A simple library implementing an event emitter in Java.'
                 url = 'https://github.com/nicolas-van/eventemitter#readme'
                 licenses {
