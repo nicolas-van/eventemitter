@@ -16,7 +16,7 @@ repositories {
 // group is necessary
 group = 'io.github.nicolas-van'
 // the current version
-version = '0.0.6'
+version = '0.0.7'
 
 spotless {
   java {
