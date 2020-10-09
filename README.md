@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) [![Java CI with Gradle](https://github.com/nicolas-van/eventemitter/workflows/Java%20CI%20with%20Gradle/badge.svg)](https://github.com/nicolas-van/eventemitter/actions?query=workflow%3A%22Java+CI+with+Gradle%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) [![Gradle Build](https://github.com/nicolas-van/eventemitter/workflows/Gradle%20Build/badge.svg)](https://github.com/nicolas-van/eventemitter/actions?query=workflow%3A%22Gradle+Build%22)
 
 # eventemitter
 
