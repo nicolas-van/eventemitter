@@ -15,10 +15,10 @@ implementation 'io.github.nicolas-van:eventemitter:0.0.9'
 
 ```xml
 <dependency>
-<groupId>io.github.nicolas-van</groupId>
-<artifactId>eventemitter</artifactId>
-<version>0.0.6</version>
-<type>pom</type>
+  <groupId>io.github.nicolas-van</groupId>
+  <artifactId>eventemitter</artifactId>
+  <version>0.0.9</version>
+  <type>pom</type>
 </dependency>
 ```
 
