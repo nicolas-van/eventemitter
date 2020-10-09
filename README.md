@@ -1,4 +1,4 @@
-![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter)
 
 # eventemitter
 
