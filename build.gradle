@@ -54,13 +54,16 @@ artifacts {
     archives javadocJar
 }
 
-signing {
-    def signingKey = System.getenv("MVN_PGP_PRIVATE_KEY")
-    def signingPassword = System.getenv("MVN_PGP_PRIVATE_KEY_PASSWORD")
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign configurations.archives
+if (gradle.startParameter.taskNames.contains("sign")) {
+    signing {
+        useInMemoryPgpKeys(System.getenv("MVN_PGP_PRIVATE_KEY"), System.getenv("MVN_PGP_PRIVATE_KEY_PASSWORD"))
+        sign configurations.archives
+    }
+} else {
+    task signArchives {
+        // do nothing
+    }
 }
-
 
 def pomConfig = {
     licenses {
