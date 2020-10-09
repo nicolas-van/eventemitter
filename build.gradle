@@ -2,21 +2,21 @@
 plugins {
     id "com.diffplug.gradle.spotless" version "3.26.1"
     id "io.freefair.lombok" version "5.1.0"
-    id "com.jfrog.bintray" version "1.8.5"
 }
 
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+repositories {
+    mavenCentral()
+}
 
 // group is necessary
 group = 'io.github.nicolas-van'
 // the current version
 version = '0.0.6'
-
-repositories {
-    jcenter()
-}
 
 spotless {
   java {
@@ -49,9 +49,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
+    archives jar
     archives sourcesJar
     archives javadocJar
 }
+
+signing {
+    def signingKey = System.getenv("MVN_PGP_PRIVATE_KEY")
+    def signingPassword = System.getenv("MVN_PGP_PRIVATE_KEY_PASSWORD")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign configurations.archives
+}
+
 
 def pomConfig = {
     licenses {
@@ -96,27 +105,12 @@ publishing {
             }
         }
     }
-}
-
-bintray {
-    // the user name in bintray
-    user = 'nicolas-van'
-    // the bintray api key
-    key = System.getenv("BINTRAY_API_KEY")
-    publications = ['MyPublication']
-    publish = true
-    
-    pkg {
-        // the repo name in bintray
-        repo = 'maven'
-        name = rootProject.name
-        // the license again
-        licenses = ['MIT']
-        // the vcs url again
-        vcsUrl = 'https://github.com/nicolas-van/eventemitter'
-        pkg {
-            version {
-                name = rootProject.version
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username System.getenv("SONATYPE_USERNAME")
+                password System.getenv("SONATYPE_PASSWORD")
             }
         }
     }
