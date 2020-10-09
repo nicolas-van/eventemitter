@@ -22,13 +22,10 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Build with Gradle
       run: gradle build
-    - name: Sign archives
-      run: gradle sign
-      env:
-        MVN_PGP_PRIVATE_KEY: ${{ secrets.MVN_PGP_PRIVATE_KEY }}
-        MVN_PGP_PRIVATE_KEY_PASSWORD: ${{ secrets.MVN_PGP_PRIVATE_KEY_PASSWORD }}
     - name: Publish to Sonatype
       run: gradle publish
       env:
+        MVN_PGP_PRIVATE_KEY: ${{ secrets.MVN_PGP_PRIVATE_KEY }}
+        MVN_PGP_PRIVATE_KEY_PASSWORD: ${{ secrets.MVN_PGP_PRIVATE_KEY_PASSWORD }}
         SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
