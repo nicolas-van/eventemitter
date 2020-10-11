@@ -6,22 +6,7 @@ A simple library implementing an event emitter in Java.
 
 ## Installation
 
-### Gradle
-
-```groovy
-implementation 'io.github.nicolas-van:eventemitter:0.0.9'
-```
-
-### Maven
-
-```xml
-<dependency>
-  <groupId>io.github.nicolas-van</groupId>
-  <artifactId>eventemitter</artifactId>
-  <version>0.0.9</version>
-  <type>pom</type>
-</dependency>
-```
+See [the page page on search.maven.org](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) for Gradle of Maven configuration per version.
 
 ## Usage
 
