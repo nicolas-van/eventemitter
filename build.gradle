@@ -20,7 +20,7 @@ repositories {
 group = 'io.github.nicolas-van'
 
 // the current version
-version = '0.0.11'
+version = '1.0.0'
 
 java {
     withJavadocJar()
