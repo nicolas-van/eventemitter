@@ -98,7 +98,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">EventEmitter&lt;E&gt;</span>
 extends java.lang.Object</pre>
 <div class="block">A very simple implementation of an event emitter, made to use Java's lambda expressions
- extensively.</div>
+ extensively.
+
+ <p>Is thread safe.
+
+ <p>Is also exception safe as all exception occurring in consumers are redirected to an uncaught
+ exception handler.</div>
 </section>
 <section class="summary">
 <ul class="blockList">
@@ -209,7 +214,8 @@ extends java.lang.Object</pre>
 <h3><a id="&lt;init&gt;()">EventEmitter</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">EventEmitter</span>()</div>
 <div class="block">Constructs an event emitter with an exception handler redirecting to
- `Thread.getDefaultUncaughtExceptionHandler()` if it is defined.</div>
+ `Thread.getDefaultUncaughtExceptionHandler()` if it is defined. If is is not defined the
+ exceptions will be ignored.</div>
 </section>
 </li>
 <li class="blockList">
@@ -265,10 +271,11 @@ java.lang.Thread.UncaughtExceptionHandler&nbsp;ueh_)</span></div>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">trigger</span>&#8203;(<span class="arguments"><a href="EventEmitter.html" title="type parameter in EventEmitter">E</a>&nbsp;arg)</span></div>
 <div class="block">Triggers all consumers with the specified argument.
 
- <p>Any exception occuring in a consumer will be redirected to the uncaught exception handler.
+ <p>Any exception occurring in a consumer will be redirected to the uncaught exception
+ handler.
 
- <p>A copy of the consumers list is created before invoking the consumers in case some
- consumers are added or removed during the event handling.</div>
+ <p>A copy of the consumers list is created before invoking them. This allows the list to be
+ mutated during event triggering.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>arg</code> - The argument</dd>
@@ -280,7 +287,10 @@ java.lang.Thread.UncaughtExceptionHandler&nbsp;ueh_)</span></div>
 <h3><a id="getUncaughtExceptionHandler()">getUncaughtExceptionHandler</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">java.lang.Thread.UncaughtExceptionHandler</span>&nbsp;<span class="memberName">getUncaughtExceptionHandler</span>()</div>
 <div class="block">The uncaught exception handler. It is used whenever an exception is thrown in one of the
- consumers.</div>
+ consumers.
+
+ <p>Note that the uncaught exception handler should never throw exceptions. If that happens
+ anyway the exception will be ignored.</div>
 </section>
 </li>
 </ul>
