@@ -1,27 +1,12 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) [![Java CI with Gradle](https://github.com/nicolas-van/eventemitter/workflows/Java%20CI%20with%20Gradle/badge.svg)](https://github.com/nicolas-van/eventemitter/actions?query=workflow%3A%22Java+CI+with+Gradle%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.nicolas-van/eventemitter)](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) [![Gradle Build](https://github.com/nicolas-van/eventemitter/workflows/Gradle%20Build/badge.svg)](https://github.com/nicolas-van/eventemitter/actions)
 
 # eventemitter
 
-A simple library implementing an event emitter in Java.
+A simple library implementing an event emitter in Java, made to use closures. It's **way** simpler and shorter than Swing's crappy `EventListener`.
 
 ## Installation
 
-### Gradle
-
-```groovy
-implementation 'io.github.nicolas-van:eventemitter:0.0.9'
-```
-
-### Maven
-
-```xml
-<dependency>
-  <groupId>io.github.nicolas-van</groupId>
-  <artifactId>eventemitter</artifactId>
-  <version>0.0.9</version>
-  <type>pom</type>
-</dependency>
-```
+See [the page on search.maven.org](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) for Gradle of Maven configuration per version.
 
 ## Usage
 
@@ -44,7 +29,7 @@ public class ExampleClass {
     
     public void setStatus(String stat) {
         this.status = stat;
-        this.statusChanged.trigger(stat);
+        this.getStatusChanged().trigger(stat);
     }
 }
 ```
