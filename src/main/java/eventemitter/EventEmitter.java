@@ -9,6 +9,11 @@ import lombok.NonNull;
 /**
  * A very simple implementation of an event emitter, made to use Java's lambda expressions
  * extensively.
+ *
+ * <p>Is thread safe.
+ *
+ * <p>Is also exception safe as all exception occurring in consumers are redirected to an uncaught
+ * exception handler.
  */
 public class EventEmitter<E> {
 
@@ -17,12 +22,16 @@ public class EventEmitter<E> {
     /**
      * The uncaught exception handler. It is used whenever an exception is thrown in one of the
      * consumers.
+     *
+     * <p>Note that the uncaught exception handler should never throw exceptions. If that happens
+     * anyway the exception will be ignored.
      */
     @Getter final Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
 
     /**
      * Constructs an event emitter with an exception handler redirecting to
-     * `Thread.getDefaultUncaughtExceptionHandler()` if it is defined.
+     * `Thread.getDefaultUncaughtExceptionHandler()` if it is defined. If is is not defined the
+     * exceptions will be ignored.
      */
     public EventEmitter() {
         this(
@@ -66,10 +75,11 @@ public class EventEmitter<E> {
     /**
      * Triggers all consumers with the specified argument.
      *
-     * <p>Any exception occuring in a consumer will be redirected to the uncaught exception handler.
+     * <p>Any exception occurring in a consumer will be redirected to the uncaught exception
+     * handler.
      *
-     * <p>A copy of the consumers list is created before invoking the consumers in case some
-     * consumers are added or removed during the event handling.
+     * <p>A copy of the consumers list is created before invoking them. This allows the list to be
+     * mutated during event triggering.
      *
      * @param arg The argument
      */
