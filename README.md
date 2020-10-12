@@ -6,7 +6,7 @@ A simple library implementing an event emitter in Java.
 
 ## Installation
 
-See [the page page on search.maven.org](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) for Gradle of Maven configuration per version.
+See [the page on search.maven.org](https://search.maven.org/artifact/io.github.nicolas-van/eventemitter) for Gradle of Maven configuration per version.
 
 ## Usage
 
