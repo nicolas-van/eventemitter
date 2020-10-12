@@ -29,7 +29,7 @@ public class ExampleClass {
     
     public void setStatus(String stat) {
         this.status = stat;
-        this.statusChanged.trigger(stat);
+        this.getStatusChanged().trigger(stat);
     }
 }
 ```
