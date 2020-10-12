@@ -2,7 +2,7 @@
 
 # eventemitter
 
-A simple library implementing an event emitter in Java.
+A simple library implementing an event emitter in Java, made to use closures. It's **way** simpler and shorter than Swing's crappy `EventListener`.
 
 ## Installation
 
